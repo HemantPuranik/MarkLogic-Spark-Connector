@@ -10,7 +10,6 @@ import scala.language.implicitConversions
 class SparkContextFunctions (@transient val sc: SparkContext) extends Serializable {
 
   def newMarkLogicDocumentRDD():  MarkLogicDocumentRDD = {
-    //construct a query - only collection query here based on collection name argument.
     new MarkLogicDocumentRDD(sc)
   }
 

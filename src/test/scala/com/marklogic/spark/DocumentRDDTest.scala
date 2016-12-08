@@ -20,46 +20,7 @@ class DocumentRDDTest extends FunSuite {
   sparkConf.set("MarkLogic_Collection", "NorthCarolina")
   val sc: SparkContext = new SparkContext(sparkConf)
 
-  /*
-  test("testPrintRDD") {
-
-    val rdd = new DocumentRDD("localhost", 8003, "admin", "admin", "USASpendingVendor")
-    rdd.printRDD()
-
-  }
-
-
-  test("testGetPartitions") {
-
-    val rdd = sc.newMarkLogicDocumentRDD("localhost", 8072, "admin", "admin", "")
-    val parts: Array[Partition] = rdd.accessParts
-
-    for(part <- parts){
-      println(part.toString)
-    }
-
-  }
-
-
-  test("testOracleServerConnection") {
-
-    val sqlContext = new SQLContext(sc)
-
-    val employees : DataFrame = sqlContext.read.format("jdbc").options(
-      Map(
-        "driver" -> "oracle.jdbc.driver.OracleDriver",
-        "url" -> "jdbc:oracle:thin:ADVENTUREWORKS/1234@engrlab-129-226.engrlab.marklogic.com:1521:xe",
-        "dbtable" -> "HR$VEMPLOYEE"
-      )).load()
-
-    employees.saveDataFrameToMarkLogic()
-  }
-
-  */
-
   test("testComputePartitions") {
-    //val conf: SparkConf = new SparkConf().setAppName("com.marklogic.spark.DocumentRDDTest").setMaster("local")
-    //val sc: SparkContext = new SparkContext(conf)
     val rdd = sc.newMarkLogicDocumentRDD()
     val parts: Array[Partition] = rdd.accessParts
 
